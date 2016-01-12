@@ -33,7 +33,7 @@ Route::group(['middleware'=> 'auth'], function()
     ));
 
     /**
-     * Activities Routes
+     * Types Routes
      */
     Route::get('types',array(
         'uses'=>'thanosalexander\activity\Http\Controllers\TypeController@index',
