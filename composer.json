@@ -16,5 +16,10 @@
         "psr-4": {
             "Thanosalexander\\Activity\\": "src/"
         }
+    },
+     "extra": {
+        "branch-alias": {
+            "dev-master": "dev-master"
+        }
     }
 }
