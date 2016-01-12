@@ -12,7 +12,12 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Thanosalexander\\Activity\\": "src/",
+            "Thanosalexander\\Activity\\": "src/"
+        }
+    },
+     "extra": {
+        "branch-alias": {
+            "dev-master": "master"
         }
     }
 }
