@@ -43,7 +43,7 @@ class Activity
 
             $activity = ActivityModel::create($data);
 
-            DB::rollBack();
+            DB::commit();
 
             return $activity;
         }
