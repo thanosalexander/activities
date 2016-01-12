@@ -1,0 +1,13 @@
+{
+    "name": "thanosalexander/activity",
+    "description": "This package keeps activities for various actions",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Atahanasios Alexandris",
+            "email": "thanosalexander@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
