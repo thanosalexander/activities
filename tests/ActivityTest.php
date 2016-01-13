@@ -94,7 +94,7 @@ class ActivityTest extends TestsBase
 
     }
 
-    
+
     public function test_it_checks_if_ip_is_valid()
     {
         $ip = '192.168.1.1';

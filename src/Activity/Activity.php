@@ -122,15 +122,13 @@ class Activity
      * Deletes an activity
      *
      * @param $activity
-     * @return null|boolean
+     * @return boolean
      */
     public function delete($activity)
     {
         if(is_int($activity) && ActivityModel::find($activity)) return ActivityModel::find($activity)->delete();
 
         if($activity instanceof ActivityModel) return $activity->delete();
-
-        return null;
     }
 
     /**

@@ -88,7 +88,7 @@ class Type
      * Deletes a type
      *
      * @param $type
-     * @return null|boolean
+     * @return null
      */
     public function delete($type)
     {
@@ -97,8 +97,6 @@ class Type
         if($type instanceof TypeModel) return $type->delete();
 
         if(TypeModel::whereName($type)->first()) return TypeModel::whereName($type)->first()->delete();
-
-        return null;
     }
 
     /**
