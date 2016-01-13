@@ -17,7 +17,7 @@ Tracks activities fired when specific types happened.
 To get the latest version of Activities simply require it in your `composer.json` file.
 
 ~~~
-"thanosalexander/activity":"1.0"
+"thanosalexander/activity":"~1.0"
 ~~~
 
 You'll then need to run `composer install` to download it and have the autoloader updated.
@@ -38,7 +38,6 @@ Activities also ships with two facades which provides the static syntax for crea
 ~~~php
 'aliases' => array(
 
-    ...
     ...
     ..
 
