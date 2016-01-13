@@ -74,7 +74,7 @@ class TypeTest extends TestsBase
 
         $new_type = (new Type())->create($data);
 
-        $this->assertInstanceOf(TypeModel::class,$new_type);
+        $this->assertInstanceOf('Thanosalexander\Activity\models\Type',$new_type);
 
     }
 
@@ -82,7 +82,7 @@ class TypeTest extends TestsBase
     {
         $types_collection = (new Type())->all();
 
-        $this->assertInstanceOf(Illuminate\Database\Eloquent\Collection::class,$types_collection);
+        $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection',$types_collection);
 
         $this->assertEquals($types_collection->count(),TypeModel::all()->count());
     }
@@ -141,10 +141,9 @@ class TypeTest extends TestsBase
 
     public function test_it_empty_the_types_table()
     {
-        $emptied = (new Type())->truncate();
+        (new Type())->truncate();
 
         $this->assertEquals(0,TypeModel::count());
-
     }
 
 }
