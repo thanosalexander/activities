@@ -13,10 +13,12 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=5.3"
+        "php": ">=5.3",
+        "illuminate/support": "~5.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "5.*"
+        "orchestra/testbench": "~3.0",
+        "phpunit/phpunit": "~5.2"
     },
     "repositories": [
         {
@@ -27,6 +29,10 @@
     "autoload": {
         "psr-4": {
             "Thanosalexander\\Activity\\": "src/"
-        }
+        },
+        "classmap": [
+            "tests"
+        ]
     }
+
 }

@@ -1,17 +1,18 @@
-<?php
-namespace Thanosalexander\Activity\Activity;
+<?php namespace Thanosalexander\Activity\Activity;
 
 
-use Football\User;
-use Illuminate\Support\Facades\DB;
 use Thanosalexander\Activity\Exceptions\Activity\CreateActivityException;
 use Thanosalexander\Activity\Exceptions\Activity\NullDataException;
 use Thanosalexander\Activity\models\Activity as ActivityModel;
 use Thanosalexander\Activity\models\Type as TypeModel;
+use Illuminate\Support\Facades\DB;
 
 
 class Activity
 {
+
+
+
     protected $fields = [
         'type_id',
         'user_id',
@@ -27,6 +28,7 @@ class Activity
      */
     public function create($data=null)
     {
+
         DB::beginTransaction();
 
         try {
@@ -65,8 +67,6 @@ class Activity
     {
         if(!$this->typeExists($data['type_id'])) throw new CreateActivityException('The type doesn\'t exist');
 
-        if($data['user_id']>0 && !$this->userExists($data['user_id'])) throw new CreateActivityException('The user doesn\'t exist');
-
         if(!$this->isIp($data['ip'])) throw new CreateActivityException('The ip is not valid');
     }
 
@@ -92,16 +92,6 @@ class Activity
         return is_null(TypeModel::find($id)) ? false : true;
     }
 
-    /**
-     * Check if user with id $id exists
-     *
-     * @param $id
-     * @return bool
-     */
-    private function userExists($id)
-    {
-        return is_null(User::find($id)) ? false : true;
-    }
 
     /**
      * Truncates Table

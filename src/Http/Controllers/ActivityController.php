@@ -1,6 +1,6 @@
 <?php namespace Thanosalexander\Activity\Http\Controllers;
 
-use Football\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use Thanosalexander\Activity\Http\Requests\Activity\CreateActivityRequest;
 use Thanosalexander\Activity\Http\Requests\Activity\UpdateActivityRequest;
 use Thanosalexander\Activity\models\Activity as ActivityModel;

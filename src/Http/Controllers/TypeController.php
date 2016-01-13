@@ -1,6 +1,6 @@
 <?php namespace Thanosalexander\Activity\Http\Controllers;
 
-use Football\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use Thanosalexander\Activity\Http\Requests\Type\CreateTypeRequest;
 use Thanosalexander\Activity\Http\Requests\Type\UpdateTypeRequest;
 use Thanosalexander\Activity\models\Type as TypeModel;

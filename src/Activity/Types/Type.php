@@ -23,7 +23,7 @@ class Type
      * @return null|TypeModel
      */
     public function create($data=null)
-    {
+    {dd($data);
         DB::beginTransaction();
 
         try {
@@ -43,6 +43,18 @@ class Type
             DB::commit();
 
             return $type;
+        }
+        catch(NullDataException $e)
+        {
+            DB::rollBack();
+
+            return $e;
+        }
+        catch(CreateTypeException $e)
+        {
+            DB::rollBack();
+
+            return $e;
         }
         catch(\Exception $e)
         {
