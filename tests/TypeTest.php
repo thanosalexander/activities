@@ -15,7 +15,7 @@ class TypeTest extends TestsBase
 
         $new_type = (new Type())->create($data);
 
-        $this->assertInstanceOf(NullDataException::class,$new_type);
+        $this->assertInstanceOf('Thanosalexander\Activity\Exceptions\Type\NullDataException',$new_type);
 
         $this->assertEquals('The data array is required!',$new_type->getMessage());
     }

@@ -15,6 +15,9 @@
         </testsuite>
     </testsuites>
     <filter>
+        <blacklist>
+            <directory suffix=".php">./vendor</directory>
+        </blacklist>
         <whitelist addUncoveredFilesFromWhitelist="true">
             <directory>./src</directory>
             <exclude>
@@ -25,5 +28,10 @@
             </exclude>
         </whitelist>
     </filter>
+    <logging>
+        <log type="coverage-html" target="./report" charset="UTF-8"
+             yui="true" highlight="true"
+             lowUpperBound="50" highLowerBound="80" />
+    </logging>
 </phpunit>
 
