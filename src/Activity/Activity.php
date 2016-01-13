@@ -1,6 +1,5 @@
 <?php namespace Thanosalexander\Activity\Activity;
 
-
 use Thanosalexander\Activity\Exceptions\Activity\CreateActivityException;
 use Thanosalexander\Activity\Exceptions\Activity\NullDataException;
 use Thanosalexander\Activity\models\Activity as ActivityModel;
@@ -10,8 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class Activity
 {
-
-
 
     protected $fields = [
         'type_id',
@@ -28,7 +25,6 @@ class Activity
      */
     public function create($data=null)
     {
-
         DB::beginTransaction();
 
         try {
@@ -36,7 +32,7 @@ class Activity
             if (is_null($data)) throw new NullDataException('The data array is required!');
 
             foreach ($data as $k => $v) {
-                if (!in_array($k, $this->fields)) throw new CreateActivityException('Please add all required fields!');
+                if (!in_array($k, $this->fields)) throw new CreateActivityException('Please add the correct fields!');
             }
 
             if (count(array_keys($data)) != count($this->fields)) throw new CreateActivityException('The number of given data is different than required!');
@@ -49,11 +45,17 @@ class Activity
 
             return $activity;
         }
-        catch(\Exception $e)
+        catch(NullDataException $e)
         {
             DB::rollBack();
 
-            return null;
+            return $e;
+        }
+        catch(CreateActivityException $e)
+        {
+            DB::rollBack();
+
+            return $e;
         }
     }
 
@@ -76,9 +78,9 @@ class Activity
      * @param $ip
      * @return boolean
      */
-    private function isIp($ip)
+    public function isIp($ip)
     {
-        return filter_var($ip, FILTER_VALIDATE_IP);
+        return (!filter_var($ip, FILTER_VALIDATE_IP) === false);
     }
 
     /**
@@ -87,11 +89,49 @@ class Activity
      * @param $id
      * @return bool
      */
-    private function typeExists($id)
+    public function typeExists($id)
     {
         return is_null(TypeModel::find($id)) ? false : true;
     }
 
+    /**
+     * All types
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function all()
+    {
+        return ActivityModel::all();
+    }
+
+    /**
+     * Find Activity by id
+     *
+     * @param int
+     * @return null | ActivityModel
+     */
+    public function find($id)
+    {
+        if(is_int($id) && ActivityModel::find($id)) return ActivityModel::find($id);
+
+        return null;
+    }
+
+
+    /**
+     * Deletes an activity
+     *
+     * @param $activity
+     * @return null|boolean
+     */
+    public function delete($activity)
+    {
+        if(is_int($activity) && ActivityModel::find($activity)) return ActivityModel::find($activity)->delete();
+
+        if($activity instanceof ActivityModel) return $activity->delete();
+
+        return null;
+    }
 
     /**
      * Truncates Table
@@ -100,21 +140,9 @@ class Activity
      */
     public function truncate()
     {
-        DB::beginTransaction();
-
-        try{
+        DB::transaction(function () {
             ActivityModel::truncate();
-
-            DB::commit();
-
-            return true;
-        }
-        catch(\Exception $e)
-        {
-            DB::rollBack();
-
-            return false;
-        }
+        });
     }
 
 }

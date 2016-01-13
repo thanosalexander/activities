@@ -94,7 +94,7 @@ class Type
     {
         if(is_int($type) && TypeModel::find($type)) return TypeModel::find($type)->delete();
 
-        if($type instanceof TypeModel) $type->delete();
+        if($type instanceof TypeModel) return $type->delete();
 
         if(TypeModel::whereName($type)->first()) return TypeModel::whereName($type)->first()->delete();
 
