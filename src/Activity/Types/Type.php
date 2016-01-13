@@ -108,21 +108,9 @@ class Type
      */
     public function truncate()
     {
-        DB::beginTransaction();
-
-        try{
+        DB::transaction(function () {
             TypeModel::truncate();
-
-            DB::commit();
-
-            return true;
-        }
-        catch(\Exception $e)
-        {
-            DB::rollBack();
-
-            return false;
-        }
+        });
     }
 
 }

@@ -17,15 +17,15 @@
     <filter>
         <blacklist>
             <directory suffix=".php">./vendor</directory>
+            <directory suffix=".php">./report</directory>
+            <directory suffix=".php">./src/config</directory>
+            <directory suffix=".php">./src/database</directory>
+            <directory suffix=".php">./src/Facades</directory>
+            <file>./src/ActivityServiceProvider.php</file>
         </blacklist>
         <whitelist addUncoveredFilesFromWhitelist="true">
             <directory>./src</directory>
-            <exclude>
-                <directory suffix=".php">../src/config</directory>
-                <directory suffix=".php">../database</directory>
-                <directory suffix=".php">../Facades</directory>
-                <file>../ActivityServiceProvider.php</file>
-            </exclude>
+            <exclude></exclude>
         </whitelist>
     </filter>
     <logging>

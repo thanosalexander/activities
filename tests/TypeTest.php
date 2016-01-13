@@ -1,8 +1,6 @@
 <?php
 
 use Thanosalexander\Activity\Activity\Types\Type;
-use Thanosalexander\Activity\Exceptions\Type\NullDataException;
-use Thanosalexander\Activity\Exceptions\Type\CreateTypeException;
 use Thanosalexander\Activity\models\Type as TypeModel;
 
 class TypeTest extends TestsBase
@@ -30,7 +28,7 @@ class TypeTest extends TestsBase
 
         $new_type = (new Type())->create($data);
 
-        $this->assertInstanceOf(CreateTypeException::class,$new_type);
+        $this->assertInstanceOf('Thanosalexander\Activity\Exceptions\Type\CreateTypeException',$new_type);
 
         $this->assertEquals('Please add the correct fields!',$new_type->getMessage());
     }
@@ -44,7 +42,7 @@ class TypeTest extends TestsBase
 
         $new_type = (new Type())->create($data);
 
-        $this->assertInstanceOf(CreateTypeException::class,$new_type);
+        $this->assertInstanceOf('Thanosalexander\Activity\Exceptions\Type\CreateTypeException',$new_type);
 
         $this->assertEquals('The number of given data is different than required!',$new_type->getMessage());
     }
@@ -61,7 +59,7 @@ class TypeTest extends TestsBase
 
         $new_type = (new Type())->create($data);
 
-        $this->assertInstanceOf(CreateTypeException::class,$new_type);
+        $this->assertInstanceOf('Thanosalexander\Activity\Exceptions\Type\CreateTypeException',$new_type);
 
         $this->assertEquals('The type name already exists!',$new_type->getMessage());
     }
@@ -147,7 +145,6 @@ class TypeTest extends TestsBase
 
         $this->assertEquals(0,TypeModel::count());
 
-        $this->assertTrue($emptied);
     }
 
 }
