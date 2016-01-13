@@ -24,8 +24,7 @@ class TypeTest extends TestsBase
     {
         $data = null;
 
-        $this->type->create();
-
+        $this->type->create($data);
     }
 
 

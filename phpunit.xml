@@ -14,5 +14,16 @@
             <directory suffix=".php">./tests/</directory>
         </testsuite>
     </testsuites>
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory>./src</directory>
+            <exclude>
+                <directory suffix=".php">../src/config</directory>
+                <directory suffix=".php">../database</directory>
+                <directory suffix=".php">../Facades</directory>
+                <file>../ActivityServiceProvider.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
 </phpunit>
 

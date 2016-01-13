@@ -23,7 +23,7 @@ class Type
      * @return null|TypeModel
      */
     public function create($data=null)
-    {dd($data);
+    {
         DB::beginTransaction();
 
         try {

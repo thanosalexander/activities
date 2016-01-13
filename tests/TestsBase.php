@@ -21,10 +21,6 @@ class TestsBase extends \Orchestra\Testbench\TestCase
         $this->assertEquals('1', $activity->type_id);
     }
 
-    protected function getPackageProviders($app)
-    {
-        return ['Thanosalexander\Activity\ActivityServiceProvider'];
-    }
 
     /**
      * Define environment setup.
