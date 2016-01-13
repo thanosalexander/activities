@@ -12,7 +12,7 @@ class TestsBase extends \Orchestra\Testbench\TestCase
         $this->artisan('migrate:refresh', [
             '--database' => 'testing',
             '--realpath' => realpath(__DIR__.'/migrations'),
-        ]);dd(3444);
+        ]);
     }
 
     public function testRunningMigration()
