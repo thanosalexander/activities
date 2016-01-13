@@ -7,11 +7,23 @@
     "authors": [
         {
             "name": "Atahanasios Alexandris",
-            "email": "thanosalexander@gmail.com"
+            "email": "thanosalexander@gmail.com",
+            "homepage": "http://aetos.it.teithe.gr/~athalex"
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "php": ">=5.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.*"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/thanosalexander/activities"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Thanosalexander\\Activity\\": "src/"

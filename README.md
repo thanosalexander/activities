@@ -5,6 +5,9 @@ Tracks activities fired when specific types happened.
 
 ----------
 
+[![Build Status](https://travis-ci.org/thanosalexander/activities.png?branch=master)](http://travis-ci.org/thanosalexander/activities)
+
+
 ## Installation
 
 To get the latest version of Activities simply require it in your `composer.json` file.
