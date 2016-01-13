@@ -5,7 +5,7 @@ Tracks activities fired when specific types happened.
 
 ----------
 
-[![Build Status](https://travis-ci.org/thanosalexander/activities.png?branch=master)](http://travis-ci.org/thanosalexander/activities)
+[![Build Status](https://travis-ci.org/thanosalexander/activities.svg?branch=master)](http://travis-ci.org/thanosalexander/activities)
 
 
 ## Installation

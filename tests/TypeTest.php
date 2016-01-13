@@ -1,6 +1,7 @@
 <?php
 
 use Thanosalexander\Activity\Activity\Types\Type;
+use Thanosalexander\Activity\Exceptions\Type\NullDataException;
 
 class TypeTest extends TestsBase
 {
@@ -23,7 +24,8 @@ class TypeTest extends TestsBase
     {
         $data = null;
 
-        (new Type())->create($data);
+        $this->type->create($data);
+
     }
 
 
