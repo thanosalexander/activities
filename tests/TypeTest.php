@@ -5,7 +5,6 @@ use Thanosalexander\Activity\models\Type as TypeModel;
 
 class TypeTest extends TestsBase
 {
-    use \Illuminate\Foundation\Testing\DatabaseTransactions;
 
     public function test_it_does_not_create_type_if_data_is_null()
     {

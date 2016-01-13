@@ -15,18 +15,18 @@
         </testsuite>
     </testsuites>
     <filter>
-        <blacklist>
-            <directory suffix=".php">./vendor</directory>
-            <directory suffix=".php">./report</directory>
-            <directory suffix=".php">./src/config</directory>
-            <directory suffix=".php">./src/database</directory>
-            <directory suffix=".php">./src/Facades</directory>
-            <directory suffix=".php">./src/Exceptions</directory>
-            <file>./src/ActivityServiceProvider.php</file>
-        </blacklist>
         <whitelist addUncoveredFilesFromWhitelist="true">
             <directory>./src</directory>
-            <exclude></exclude>
+            <exclude>
+                <directory suffix=".php">./vendor</directory>
+                <directory suffix=".php">./report</directory>
+                <directory suffix=".php">./src/config</directory>
+                <directory suffix=".php">./src/database</directory>
+                <directory suffix=".php">./src/Facades</directory>
+                <directory suffix=".php">./src/Exceptions</directory>
+                <directory suffix=".php">./src/models</directory>
+                <file>./src/ActivityServiceProvider.php</file>
+            </exclude>
         </whitelist>
     </filter>
     <logging>

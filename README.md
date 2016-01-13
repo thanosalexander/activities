@@ -6,7 +6,7 @@ Tracks activities fired when specific types happened.
 ----------
 
 [![Build Status](https://travis-ci.org/thanosalexander/activities.svg?branch=master)](http://travis-ci.org/thanosalexander/activities)
-[![Latest Stable Version](https://poser.pugx.org/thanosalexander/activity/v/stable)](https://packagist.org/packages/thanosalexander/activity) 
+[![Latest Stable Version](https://poser.pugx.org/thanosalexander/activity/v/stable)](https://packagist.org/packages/thanosalexander/activity)
 [![Total Downloads](https://poser.pugx.org/thanosalexander/activity/downloads)](https://packagist.org/packages/thanosalexander/activity)
 [![Latest Unstable Version](https://poser.pugx.org/thanosalexander/activity/v/unstable)](https://packagist.org/packages/thanosalexander/activity)
 [![License](https://poser.pugx.org/thanosalexander/activity/license)](https://packagist.org/packages/thanosalexander/activity)
