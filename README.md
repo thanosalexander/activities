@@ -13,7 +13,7 @@ Tracks activities fired when specific types happened.
 To get the latest version of Activities simply require it in your `composer.json` file.
 
 ~~~
-"thanosalexander/activity":"dev-master"
+"thanosalexander/activity":"1.0"
 ~~~
 
 You'll then need to run `composer install` to download it and have the autoloader updated.
