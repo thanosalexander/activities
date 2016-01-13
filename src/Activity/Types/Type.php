@@ -31,7 +31,7 @@ class Type
             if (is_null($data)) throw new NullDataException('The data array is required!');
 
             foreach ($data as $k => $v) {
-                if (!in_array($k, $this->fields)) throw new CreateTypeException('Please add all required fields!');
+                if (!in_array($k, $this->fields)) throw new CreateTypeException('Please add the correct fields!');
             }
 
             if (count(array_keys($data)) != count($this->fields)) throw new CreateTypeException('The number of given data is different than required!');
@@ -55,12 +55,6 @@ class Type
             DB::rollBack();
 
             return $e;
-        }
-        catch(\Exception $e)
-        {
-            DB::rollBack();
-
-            return null;
         }
     }
 
