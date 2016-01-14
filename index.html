@@ -19,15 +19,162 @@
     </section>
 
     <section class="main-content">
-      <h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+      <h1>
+<a id="activities-tracking-for-laravel" class="anchor" href="#activities-tracking-for-laravel" aria-hidden="true"><span class="octicon octicon-link"></span></a>Activities tracking for Laravel</h1>
 
-<p>Thanos Alexandris(<a href="https://github.com/thanosalexander" class="user-mention">@thanosalexander</a>)</p>
+<p>Tracks activities fired when specific types happened. </p>
+
+<hr>
+
+<p><a href="http://travis-ci.org/thanosalexander/activities"><img src="https://travis-ci.org/thanosalexander/activities.svg?branch=master" alt="Build Status"></a>
+<a href="https://packagist.org/packages/thanosalexander/activity"><img src="https://poser.pugx.org/thanosalexander/activity/v/stable" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/thanosalexander/activity"><img src="https://poser.pugx.org/thanosalexander/activity/downloads" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/thanosalexander/activity"><img src="https://poser.pugx.org/thanosalexander/activity/v/unstable" alt="Latest Unstable Version"></a>
+<a href="https://packagist.org/packages/thanosalexander/activity"><img src="https://poser.pugx.org/thanosalexander/activity/license" alt="License"></a></p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>To get the latest version of Activities simply require it in your <code>composer.json</code> file.</p>
+
+<pre><code>"thanosalexander/activity":"~1.0"
+</code></pre>
+
+<p>You'll then need to run <code>composer install</code> to download it and have the autoloader updated.</p>
+
+<p>Once Activities is installed you need to register the service provider with the application. Open up <code>config/app.php</code> and find the <code>providers</code> key.</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-s"><span class="pl-pds">'</span>providers<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">array</span>(</span>
+<span class="pl-s1">    <span class="pl-k">...</span></span>
+<span class="pl-s1">    <span class="pl-k">...</span></span>
+<span class="pl-s1">    <span class="pl-c1">\Thanosalexander\Activity\</span><span class="pl-c1">ActivityServiceProvider</span><span class="pl-k">::</span><span class="pl-c1">class</span>,</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">)</span></pre></div>
+
+<p>Activities also ships with two facades which provides the static syntax for creating activities. You can register the facade in the <code>aliases</code> key of your <code>config/app.php</code> file.</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-s"><span class="pl-pds">'</span>aliases<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">array</span>(</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-k">...</span></span>
+<span class="pl-s1">    <span class="pl-k">..</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>Activity<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">\Thanosalexander\Activity\Facades\</span><span class="pl-c1">Activity</span><span class="pl-k">::</span><span class="pl-c1">class</span>,</span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">'</span>Type<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">\Thanosalexander\Activity\Facades\</span><span class="pl-c1">Type</span><span class="pl-k">::</span><span class="pl-c1">class</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1">)</span></pre></div>
 
 <h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<a id="publish-the-configurations" class="anchor" href="#publish-the-configurations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Publish the configurations</h3>
 
-<p>[<a href="mailto:thanosalexander@gmail.com">thanosalexander@gmail.com</a>]</p>
+<p>Run this on the command line from the root of your project:</p>
+
+<pre><code>$ php artisan vendor:publish
+</code></pre>
+
+<p>A configuration file will be publish to <code>config/activities.php</code>
+Also the migrations will be published into migrations folder!</p>
+
+<h3>
+<a id="run-the-migrations" class="anchor" href="#run-the-migrations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Run the migrations</h3>
+
+<p>Activities package comes with two tables, <code>activities_types</code> and <code>activities</code>.
+Just go to terminal and run </p>
+
+<pre><code>$ php artisan migrate
+</code></pre>
+
+<p>Now the tables are created!</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Create a new Type</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-smi">$type</span><span class="pl-k">=</span> <span class="pl-c1">\</span><span class="pl-c1">Type</span><span class="pl-k">::</span>create([</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span><span class="pl-k">=&gt;</span><span class="pl-s"><span class="pl-pds">'</span>login<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>description<span class="pl-pds">'</span></span><span class="pl-k">=&gt;</span><span class="pl-s"><span class="pl-pds">'</span>login action<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>label<span class="pl-pds">'</span></span><span class="pl-k">=&gt;</span><span class="pl-s"><span class="pl-pds">'</span>Login<span class="pl-pds">'</span></span></span>
+<span class="pl-s1">        ]);</span></pre></div>
+
+<blockquote>
+<p>All the fields are required in order to create an activity type!
+Also the <code>name</code> is unique!</p>
+</blockquote>
+
+<p>Create a new Activity</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-smi">$activity</span> <span class="pl-k">=</span> <span class="pl-c1">\</span><span class="pl-c1">Activity</span><span class="pl-k">::</span>create([</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>user_id<span class="pl-pds">'</span></span><span class="pl-k">=&gt;</span><span class="pl-c1">0</span>,</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>type_id<span class="pl-pds">'</span></span><span class="pl-k">=&gt;</span><span class="pl-c1">3</span>,</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>content<span class="pl-pds">'</span></span><span class="pl-k">=&gt;</span><span class="pl-s"><span class="pl-pds">'</span>The content of this action<span class="pl-pds">'</span></span>,</span>
+<span class="pl-s1">            <span class="pl-s"><span class="pl-pds">'</span>ip<span class="pl-pds">'</span></span><span class="pl-k">=&gt;</span> <span class="pl-c1">\Illuminate\Support\Facades\</span><span class="pl-c1">Request</span><span class="pl-k">::</span>getClientIp()</span>
+<span class="pl-s1">        ]);</span></pre></div>
+
+<blockquote>
+<p>The <code>user_id</code> field is not required in order to create an Activity! However for guest users actions the field will be <code>nullable</code></p>
+</blockquote>
+
+<h2>
+<a id="controllers" class="anchor" href="#controllers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Controllers</h2>
+
+<p>The package comes with two controllers <code>TypeController</code> and <code>ActivityController</code>.
+They are almost resource controller with very simple syntax.</p>
+
+<h4>
+<a id="activities-routes" class="anchor" href="#activities-routes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Activities Routes</h4>
+
+<pre><code> /**
+     * Activities Routes
+     */
+    Route::get('activities',array(
+        'uses'=&gt;'thanosalexander\activity\Http\Controllers\ActivityController@index',
+        'as'=&gt;'activities.index'
+    ));
+    Route::post('activities/create',array(
+        'uses'=&gt;'thanosalexander\activity\Http\Controllers\ActivityController@store',
+        'as'=&gt;'activities.store'
+    ));
+    Route::put('activities/update/{id}',array(
+        'uses'=&gt;'thanosalexander\activity\Http\Controllers\ActivityController@update',
+        'as'=&gt;'activities.update'
+    ));
+    Route::get('activities/show/{id}',array(
+        'uses'=&gt;'thanosalexander\activity\Http\Controllers\ActivityController@show',
+        'as'=&gt;'activities.show'
+    ));
+    Route::delete('activities/delete/{id}',array(
+        'uses'=&gt;'thanosalexander\activity\Http\Controllers\ActivityController@delete',
+        'as'=&gt;'activities.delete'
+    ));
+</code></pre>
+
+<h4>
+<a id="types-routes" class="anchor" href="#types-routes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Types Routes</h4>
+
+<pre><code>/**
+     * Types Routes
+     */
+    Route::get('types',array(
+        'uses'=&gt;'thanosalexander\activity\Http\Controllers\TypeController@index',
+        'as'=&gt;'types.index'
+    ));
+    Route::post('types/create',array(
+        'uses'=&gt;'thanosalexander\activity\Http\Controllers\TypeController@store',
+        'as'=&gt;'types.store'
+    ));
+    Route::put('types/update/{id}',array(
+        'uses'=&gt;'thanosalexander\activity\Http\Controllers\TypeController@update',
+        'as'=&gt;'types.update'
+    ));
+    Route::get('types/show/{id}',array(
+        'uses'=&gt;'thanosalexander\activity\Http\Controllers\TypeController@show',
+        'as'=&gt;'types.show'
+    ));
+    Route::delete('types/delete/{id}',array(
+        'uses'=&gt;'thanosalexander\activity\Http\Controllers\TypeController@delete',
+        'as'=&gt;'types.delete'
+    ));
+</code></pre>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/thanosalexander/activities">Laravel Activities</a> is maintained by <a href="https://github.com/thanosalexander">thanosalexander</a>.</span>
